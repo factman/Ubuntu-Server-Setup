@@ -87,7 +87,6 @@ then
   addUser;
   setFirewall;
   grantAccess;
-  goodbye;
   switchAccount;
 fi
 
