@@ -11,7 +11,7 @@ function welcome() {
 
 function goodbye() {
   echo -e "==";
-  echo -e "==  Congratulations 🎊🎉";
+  echo -e "==  Congratulations";
   echo -e "==  Server setup completed succesfully.";
   echo -e "==";
   echo -e "==  Use the following to connect via SSH on your local computer";
@@ -57,6 +57,20 @@ function switchAccount() {
   echo "==";
 }
 
+function updateRestart() {
+  echo "==";
+  echo -e "==  > Updating Server...";
+  echo "==";
+  apt -y update;
+  echo "==";
+  echo "==";
+  echo -e "==  > Upgrading Server...";
+  echo "==";
+  apt -y upgrade;
+  echo "==";
+  echo "==";
+}
+
 function output() {
   echo "==";
   echo -e -n "==  $1: ";
@@ -89,5 +103,17 @@ then
   switchAccount;
 fi
 
+output "Update and Reboot Server? (Yes)" restartServer;
+
+if [[ `checkInput $restartServer "y"` = "y" ]]
+then
+  updateRestart;
+fi
+
 # Layout end here
 goodbye;
+
+if [[ `checkInput $restartServer "y"` = "y" ]]
+then
+  reboot;
+fi

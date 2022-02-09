@@ -11,7 +11,7 @@ function welcome() {
 
 function goodbye() {
   echo -e "==";
-  echo -e "==  Congratulations 🎊🎉";
+  echo -e "==  Congratulations";
   echo -e "==  Operation succesfully.";
   echo -e "==";
   echo -e "==";
