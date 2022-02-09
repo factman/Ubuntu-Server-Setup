@@ -10,6 +10,7 @@ function welcome() {
   echo -e "---------------------------------------------";
   echo -e "==    For Ubuntu 20.04 on Digital Ocean    ==";
   echo -e "=============================================";
+  echo -e "==";
 }
 
 function goodbye() {
@@ -156,46 +157,59 @@ function checkInput() {
   esac
 }
 
-# Installation Options
-echo "==";
-echo -e "==  Press (Y) for Yes & (N) for No";
-output "Install Nginx (Yes)" installNginx;
-output "Enable HTTPS with Let's Encrypt (Yes)" enableHttps;
-output "Install NVM/NodeJS/NPM (Yes)" installNode;
-if [[ `checkInput $installNode "y"` = "y" ]]
-then
-  output "Node version (14, 16, 12, ...)" nodeVersion;
-fi
-output "Install PM2 (Yes)" installPM;
-
-# installing Nginx
-if [[ `checkInput $installNginx "y"` = "y" ]]
-then
-  setupNginx;
-  if [[ `checkInput $enableHttps "y"` = "y" ]]
+function init() {
+  # Installation Options
+  echo "==";
+  echo -e "==  Press (Y) for Yes & (N) for No";
+  output "Install Nginx (Yes)" installNginx;
+  output "Enable HTTPS with Let's Encrypt (Yes)" enableHttps;
+  output "Install NVM/NodeJS/NPM (Yes)" installNode;
+  if [[ `checkInput $installNode "y"` = "y" ]]
   then
-    enablingHTTPS;
-  else
-    enablingHTTP;
+    output "Node version (14, 16, 12, ...)" nodeVersion;
   fi
-fi
+  output "Install PM2 (Yes)" installPM;
 
-# installing NVM/Node/NPM
-if [[ `checkInput $installNode "y"` = "y" ]]
-then
-  installNVM;
-  if [[ -z $nodeVersion ]]
+  # installing Nginx
+  if [[ `checkInput $installNginx "y"` = "y" ]]
   then
-    installNodeJS 14;
-  else
-    installNodeJS $nodeVersion;
+    setupNginx;
+    if [[ `checkInput $enableHttps "y"` = "y" ]]
+    then
+      enablingHTTPS;
+    else
+      enablingHTTP;
+    fi
   fi
-fi
 
-# installing PM2
-if [[ `checkInput $installPM "y"` = "y" ]]
+  # installing NVM/Node/NPM
+  if [[ `checkInput $installNode "y"` = "y" ]]
+  then
+    installNVM;
+    if [[ -z $nodeVersion ]]
+    then
+      installNodeJS 14;
+    else
+      installNodeJS $nodeVersion;
+    fi
+  fi
+
+  # installing PM2
+  if [[ `checkInput $installPM "y"` = "y" ]]
+  then
+    installPM2;
+  fi
+}
+
+# Layout start here
+welcome;
+
+if [[ $1 = "init" ]]
 then
-  installPM2;
+  echo "==  Init in progress";
+elif [[ $1 = "update" ]]
+then
+  echo "==  Update in progress";
 fi
 
 # Layout end here

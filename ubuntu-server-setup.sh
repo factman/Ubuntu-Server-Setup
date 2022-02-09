@@ -7,6 +7,7 @@ function welcome() {
   echo -e "---------------------------------------------";
   echo -e "==    For Ubuntu 20.04 on Digital Ocean    ==";
   echo -e "=============================================";
+  echo -e "==";
 }
 
 function goodbye() {
