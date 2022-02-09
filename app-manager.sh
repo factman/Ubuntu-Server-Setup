@@ -99,6 +99,7 @@ function installNVM() {
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
   source ~/.bashrc;
+  source ~/.profile;
   echo "==";
   echo "==";
   echo -e "==  > Installed NVM: v`nvm -v`";
@@ -119,10 +120,12 @@ function installNodeJS() {
 }
 
 function installPM2() {
+  source ~/.bashrc;
+  source ~/.profile;
   echo "==";
   echo -e "==  > Installing PM2...";
   echo "==";
-  sudo npm install -g pm2;
+  npm install -g pm2;
   echo "==";
   echo "==";
   echo -e "==  > Installed PM2: v`pm2 -v`";
