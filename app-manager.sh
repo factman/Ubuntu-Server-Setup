@@ -12,7 +12,7 @@ function welcome() {
 function goodbye() {
   echo -e "==";
   echo -e "==  Congratulations 🎊🎉";
-  echo -e "==  Server setup completed succesfully.";
+  echo -e "==  Operation succesfully.";
   echo -e "==";
   echo -e "==";
   echo -e "=============================================";
@@ -126,10 +126,10 @@ function installPM2() {
   npm install -g pm2;
   echo "==";
   echo "==";
-  pm2 startup;
+  pm2Save=`pm2 startup`;
+  echo "==  " ${$pm2Save##*"[PM2] "};
   echo "==";
-  echo "==";
-  echo -e "==  > NOTE: Run the code above immediately";
+  echo -e "==  > IMPORTANT: You must run the code above to complete installation.";
   echo "==";
   echo -e "==  > Installed PM2: v`pm2 -v`";
   echo "==";
