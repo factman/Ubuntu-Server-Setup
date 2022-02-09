@@ -45,7 +45,6 @@ function setFirewall() {
 function grantAccess() {
   echo "==";
   echo -e "==  > Granting SSH access to the user...";
-  echo "==";
   rsync --archive --chown=$username:$username ~/.ssh /home/$username;
   echo "==";
 }
