@@ -126,13 +126,16 @@ function installPM2() {
   npm install -g pm2;
   echo "==";
   echo "==";
-  pm2Dem=`pm2 -v`;
   pm2Save=`pm2 startup`;
-  echo -e "==  > sudo `${pm2Save##*"sudo "}`";
+  pm2Dem=`pm2 -v`;
+  source ~/.bashrc;
+  source ~/.profile;
+  sudo ${pm2Save##*"sudo "};
   echo "==";
-  echo -e "==  > IMPORTANT: You must run the code above to complete installation.";
   echo "==";
-  echo "==";
+  # echo -e "==  > IMPORTANT: You must run the code above to complete installation.";
+  # echo "==";
+  # echo "==";
   echo -e "==  > Installed PM2: v`pm2 -v`";
   echo "==";
 }
