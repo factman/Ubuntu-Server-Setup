@@ -127,8 +127,7 @@ function installPM2() {
   echo "==";
   echo "==";
   pm2Save=`pm2 startup`;
-  echo "==  "${pm2Save##*"[PM2] "};
-  echo "==  sudo "${pm2Save##*"sudo "};
+  sudo ${pm2Save##*"sudo "};
   echo "==";
   echo -e "==  > IMPORTANT: You must run the code above to complete installation.";
   echo "==";
