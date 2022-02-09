@@ -14,8 +14,6 @@ function goodbye() {
   echo -e "==  Congratulations 🎊🎉";
   echo -e "==  Server setup completed succesfully.";
   echo -e "==";
-  echo -e "==  Use the following to connect via SSH on your local computer";
-  echo -e "==  ssh $username@$(curl -s api.infoip.io/ip)";
   echo -e "==";
   echo -e "=============================================";
   echo -e "==        Made with ❤️ from ©Factman        ==";
@@ -128,10 +126,12 @@ function installPM2() {
   npm install -g pm2;
   echo "==";
   echo "==";
-  echo -e "==  > Installed PM2: v`pm2 -v`";
-  echo "==";
   pm2 startup;
   echo "==";
+  echo "==";
+  echo -e "==  > NOTE: Run the code above immediately";
+  echo "==";
+  echo -e "==  > Installed PM2: v`pm2 -v`";
   echo "==";
 }
 
