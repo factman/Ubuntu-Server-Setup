@@ -26,10 +26,10 @@ function addUser() {
   echo "==";
   echo -e "==  > Creating a New User...";
   echo "==";
+  echo -e "==  > You will be asked a few questions";
+  echo -e "==";
   adduser $username;
   usermod -aG sudo $username;
-  echo "==";
-  echo -e "==  > You will be asked a few questions";
   echo "==";
 }
 
