@@ -18,7 +18,7 @@ function goodbye() {
   echo -e "==  ssh $username@$(curl -s api.infoip.io/ip)";
   echo -e "==";
   echo -e "=============================================";
-  echo -e "==        Made with ❤️ from ©Factman        ==";
+  echo -e "==        Made with ${red}❤️${clear} from ©Factman        ==";
   echo -e "=============================================";
 }
 

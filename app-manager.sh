@@ -1,5 +1,8 @@
 #!/bin/bash -i
 
+red='\033[0;31m';
+clear='\033[0m';
+
 function welcome() {
   clear;
   echo -e "=============================================";
@@ -16,7 +19,7 @@ function goodbye() {
   echo -e "==";
   echo -e "==";
   echo -e "=============================================";
-  echo -e "==        Made with ❤️ from ©Factman        ==";
+  echo -e "==        Made with ${red}❤️${clear} from ©Factman        ==";
   echo -e "=============================================";
 }
 
