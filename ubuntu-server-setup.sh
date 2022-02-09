@@ -24,29 +24,38 @@ function goodbye() {
 
 function addUser() {
   echo "==";
-  echo -e "==    > Creating a New User...";
+  echo -e "==  > Creating a New User...";
+  echo "==";
   adduser $username;
   usermod -aG sudo $username;
-  echo -e "==    > You will be asked a few questions";
+  echo "==";
+  echo -e "==  > You will be asked a few questions";
+  echo "==";
 }
 
 function setFirewall() {
   echo "==";
-  echo -e "==    > Setting Up a Basic Firewall...";
+  echo -e "==  > Setting Up a Basic Firewall...";
+  echo "==";
   ufw allow OpenSSH
   ufw enable
+  echo "==";
 }
 
 function grantAccess() {
   echo "==";
-  echo -e "==    > Granting SSH access to the user...";
+  echo -e "==  > Granting SSH access to the user...";
+  echo "==";
   rsync --archive --chown=$username:$username ~/.ssh /home/$username;
+  echo "==";
 }
 
 function switchAccount() {
   echo "==";
-  echo -e "==    > Switching from root to $username...";
+  echo -e "==  > Switching from root to $username...";
+  echo "==";
   su - $username;
+  echo "==";
 }
 
 function output() {
@@ -78,6 +87,7 @@ then
   addUser;
   setFirewall;
   grantAccess;
+  goodbye;
   switchAccount;
 fi
 
