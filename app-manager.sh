@@ -201,16 +201,40 @@ function init() {
   fi
 }
 
+function updateRestart() {
+  echo "==";
+  echo -e "==  > Updating Server...";
+  echo "==";
+  apt -y update;
+  echo "==";
+  echo "==";
+  echo -e "==  > Upgrading Server...";
+  echo "==";
+  apt -y upgrade;
+  echo "==";
+  echo "==";
+}
+
 # Layout start here
 welcome;
 
 if [[ $1 = "init" ]]
 then
-  echo "==  Init in progress";
+  echo "==  Installation in progress";
+  init;
 elif [[ $1 = "update" ]]
 then
-  echo "==  Update in progress";
+  output "Update and Reboot Server? (Yes)" restartServer;
+  if [[ `checkInput $restartServer "y"` = "y" ]]
+  then
+    updateRestart;
+  fi
 fi
 
 # Layout end here
 goodbye;
+
+if [[ `checkInput $restartServer "y"` = "y" ]]
+then
+  sudo reboot;
+fi

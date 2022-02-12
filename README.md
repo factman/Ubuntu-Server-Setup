@@ -39,7 +39,7 @@ cd ~ && curl https://raw.githubusercontent.com/factman/Ubuntu-Server-Setup/main/
 
 ## App Manager Usage
 
-After installation above you can access the App Manager this way
+After installation above you can access the App Manager this way to get access to the interactive menu options.
 
 ```bash
 ~/app-manager.sh
